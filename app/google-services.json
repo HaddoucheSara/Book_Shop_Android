@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430811352631",
+    "project_id": "todo-list-mobile-app",
+    "storage_bucket": "todo-list-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430811352631:android:57bd2af20b64140cd539b2",
+        "android_client_info": {
+          "package_name": "com.example.book_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQQHIMPQqFtMY8fZNpkEwuxhuwxp46zP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
