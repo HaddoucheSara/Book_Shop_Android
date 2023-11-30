@@ -3,8 +3,11 @@ package com.example.book_shop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -62,6 +65,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
         deleteNoteTextViewBtn.setOnClickListener((v)-> deleteNoteFromFirebase() );
 
+
     }
 
     void saveNote(){
@@ -84,6 +88,26 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
 
         saveNoteToFirebase(note);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, Integer.parseInt(note.getDate().split("/")[2]));
+        calendar.set(Calendar.MONTH, Integer.parseInt(note.getDate().split("/")[1]) - 1);
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(note.getDate().split("/")[0]));
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(note.getTime().split(":")[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(note.getTime().split(":")[1]));
+        calendar.set(Calendar.SECOND, 0);
+
+        // Créer une intention pour déclencher l'alarme
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra("title", note.getTitle()); // Passer des données supplémentaires si nécessaire
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Obtenir l'objet AlarmManager
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        // Définir une alarme
+        if (alarmManager != null) {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        }
 
     }
 

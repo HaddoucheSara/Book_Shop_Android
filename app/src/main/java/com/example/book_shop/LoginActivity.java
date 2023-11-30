@@ -105,5 +105,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         //end code in databese
+
     }
 }
