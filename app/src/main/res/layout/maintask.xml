@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_primary"
+
+    android:background="@drawable/background_welcome"
     android:padding="16dp"
     tools:context=".MainActivity">
     <RelativeLayout
@@ -16,17 +17,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tasks"
-            android:textColor="@color/white"
+          android:textColor="@color/purple"
             android:textSize="32sp"
             android:textStyle="bold" />
         <ImageButton
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/menu_btn"
             android:src="@drawable/baseline_menu_24"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            app:tint="@color/white"
+            app:tint="@color/purple"
             android:background="?attr/selectableItemBackgroundBorderless"
 
             /></RelativeLayout>
@@ -41,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/add_note_btn"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/purple"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:src="@drawable/baseline_add_24"

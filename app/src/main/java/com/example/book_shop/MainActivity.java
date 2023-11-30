@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //end route to login activity
-
+//https://chat.openai.com/c/37bfc7f8-f0bf-4bfb-85f1-acac92ea917a
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 

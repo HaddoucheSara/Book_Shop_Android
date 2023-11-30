@@ -43,13 +43,16 @@ public class activityTask extends AppCompatActivity {
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                if(menuItem.getTitle()=="logout"){
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(activityTask.this,LoginActivity.class));
-                    finish();
-                    return true;
+                switch (menuItem.getTitle().toString()) {
+
+                    case "logout":
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(activityTask.this, LoginActivity.class));
+                        finish();
+                        return true;
+                    default:
+                        return false;
                 }
-                return false;
             }
         });
     }

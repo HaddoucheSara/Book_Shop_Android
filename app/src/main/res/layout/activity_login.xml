@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:background="@drawable/background_welcome">
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
@@ -32,14 +34,14 @@
         android:drawableLeft="@drawable/baseline_email"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="user name"
+        android:hint="Email"
         android:inputType="text"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/purple"
-        android:textColorHint="@color/purple"
+        android:textColorHint="#a9a9a9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,14 +57,14 @@
         android:drawableLeft="@drawable/baseline_lock"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="password"
+        android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/purple"
-        android:textColorHint="@color/purple"
+        android:textColorHint="#a9a9a9"
         app:layout_constraintEnd_toEndOf="@+id/inputEmailLogin"
         app:layout_constraintStart_toStartOf="@+id/inputEmailLogin"
         app:layout_constraintTop_toBottomOf="@+id/inputEmailLogin" />
@@ -136,4 +138,5 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -3,16 +3,24 @@ package com.example.book_shop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
@@ -57,8 +65,11 @@ public class NoteDetailsActivity extends AppCompatActivity {
     }
 
     void saveNote(){
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String noteTitle = titleEditText.getText().toString();
         String noteContent = contentEditText.getText().toString();
+        String noteDate = ((EditText) findViewById(R.id.taskDate)).getText().toString();
+        String noteTime = ((EditText) findViewById(R.id.taskTime)).getText().toString();
         if(noteTitle==null || noteTitle.isEmpty() ){
             titleEditText.setError("Title is required");
             return;
@@ -67,6 +78,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
         note.setTitle(noteTitle);
         note.setContent(noteContent);
         note.setTimestamp(Timestamp.now());
+        note.setDate(noteDate);
+        note.setTime(noteTime);
+
+
 
         saveNoteToFirebase(note);
 
@@ -116,5 +131,43 @@ public class NoteDetailsActivity extends AppCompatActivity {
         });
     }
 
+
+
+
+    public void showDatePickerDialog(View v) {
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+                        EditText taskDateEditText = findViewById(R.id.taskDate);
+                        String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                        taskDateEditText.setText(selectedDate);
+                    }
+                }, year, month, day);
+        datePickerDialog.show();
+    }
+
+    public void showTimePickerDialog(View v) {
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        EditText taskTimeEditText = findViewById(R.id.taskTime);
+                        String selectedTime = hourOfDay + ":" + minute;
+                        taskTimeEditText.setText(selectedTime);
+                    }
+                }, hour, minute, false);
+        timePickerDialog.show();
+    }
 
 }
