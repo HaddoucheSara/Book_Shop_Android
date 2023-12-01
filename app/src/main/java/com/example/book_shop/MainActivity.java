@@ -26,20 +26,20 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        String email = "test@example.com";
-        String password = "testpassword";
-
-        auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // User creation successful
-                        FirebaseUser user = auth.getCurrentUser();
-
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//        String email = "test@example.com";
+//        String password = "testpassword";
+//
+//        auth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, task -> {
+//                    if (task.isSuccessful()) {
+//                        // User creation successful
+//                        FirebaseUser user = auth.getCurrentUser();
+//
+//                    } else {
+//                        // If sign in fails, display a message to the user.
+//                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
 
         String uid = auth.getCurrentUser().getUid();
         String email_user = auth.getCurrentUser().getEmail();
