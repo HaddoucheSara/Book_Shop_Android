@@ -10,7 +10,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -35,7 +34,6 @@ public class NoteDetailsActivity extends AppCompatActivity {
     boolean isEditMode = false;
     TextView deleteNoteTextViewBtn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +43,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
         contentEditText = findViewById(R.id.notes_content_text);
         saveNoteBtn = findViewById(R.id.save_note_btn);
         pageTitleTextView = findViewById(R.id.page_title);
-       deleteNoteTextViewBtn  = findViewById(R.id.delete_note_text_view_btn);
-
-
+        deleteNoteTextViewBtn  = findViewById(R.id.delete_note_text_view_btn);
 
         //receive data
         title = getIntent().getStringExtra("title");
@@ -82,12 +78,30 @@ public class NoteDetailsActivity extends AppCompatActivity {
             titleEditText.setError("Title is required");
             return;
         }
+        if (noteDate == null || noteDate.isEmpty()) {
+            // Afficher un message d'erreur pour indiquer que la date est obligatoire
+            Utility.showToast(this, "Date is required");
+            return;
+        }
+
+        if (noteTime == null || noteTime.isEmpty()) {
+            // Afficher un message d'erreur pour indiquer que l'heure est obligatoire
+            Utility.showToast(this, "Time is required");
+            return;
+        }
+
+
+
+
         Note note = new Note();
         note.setTitle(noteTitle);
         note.setContent(noteContent);
         note.setTimestamp(Timestamp.now());
         note.setDate(noteDate);
         note.setTime(noteTime);
+
+
+
 
 
 
@@ -130,15 +144,23 @@ public class NoteDetailsActivity extends AppCompatActivity {
         documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    //note is added
-                    Utility.showToast(NoteDetailsActivity.this,"Note added successfully");
-                    finish();
-                }else{
-                    Utility.showToast(NoteDetailsActivity.this,"Failed while adding note");
+                if (task.isSuccessful()) {
+                    if (isEditMode) {
+                        // Note edited successfully
+                        Utility.showToast(NoteDetailsActivity.this, "Note edited successfully");
+                    } else {
+                        // Note added successfully
+                        Utility.showToast(NoteDetailsActivity.this, "Note added successfully");
+                        finish();
+                    }
+                } else {
+                    Utility.showToast(NoteDetailsActivity.this, "Failed while saving note");
                 }
+                finish();
             }
         });
+
+
 
     }
 
