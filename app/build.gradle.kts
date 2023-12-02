@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.example.book_shop"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -35,7 +35,11 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.android.identity:identity-credential-android:20231002")
+    implementation("com.google.firebase:firebase-firestore:24.9.1")
+    implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
     testImplementation("junit:junit:4.13.2")
+    implementation ("androidx.cardview:cardview:1.0.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
