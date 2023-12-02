@@ -24,6 +24,6 @@ public class Utility {
        return FirebaseFirestore.getInstance().collection("notes").document(currentUser.getUid()).collection("my-notes");
     }
     static String timestampToString(Timestamp timestamp){
-        return new SimpleDateFormat("MM/dd/yyyy").format(timestamp.toDate());
+        return new SimpleDateFormat("dd/MM/yyyy").format(timestamp.toDate());
     }
 }
