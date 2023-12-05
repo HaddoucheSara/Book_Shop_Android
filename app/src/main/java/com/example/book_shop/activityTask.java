@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
@@ -27,6 +28,20 @@ public class activityTask extends AppCompatActivity {
         setContentView(R.layout.maintask);
         addNoteBtn = findViewById(R.id.add_note_btn);
         recyclerView = findViewById(R.id.recyler_view);
+        BottomNavigationView bott =findViewById(R.id.BottomNavigationView);
+        bott.setSelectedItemId(R.id.bottom_home);
+        bott.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if(id ==R.id.bottom_home) {
+                return true;
+            }
+            return false;
+        });
+
+
+
+
+
 
 
         addNoteBtn.setOnClickListener((v) -> startActivity(new Intent(activityTask.this, NoteDetailsActivity.class)));

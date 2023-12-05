@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
 
     <application
         android:allowBackup="true"
@@ -18,7 +17,9 @@
         android:theme="@style/Theme.Book_Shop"
         tools:targetApi="31">
         <activity
-
+            android:name=".BottomNav"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
@@ -52,9 +53,6 @@
         <receiver
             android:name=".AlarmReceiver"
             tools:ignore="WrongManifestParent" />
-
     </application>
-
-
 
 </manifest>
