@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Book_Shop" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Book_Shop" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
-     <item name="colorPrimary">@color/my_primary</item>
+     <item name="colorPrimary">@color/lightPurple</item>
     </style>
 
     <style name="Theme.Book_Shop" parent="Base.Theme.Book_Shop" />

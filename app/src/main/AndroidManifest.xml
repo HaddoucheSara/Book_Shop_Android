@@ -11,20 +11,15 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/taskpro"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Book_Shop"
+        android:theme="@style/Base.Theme.Book_Shop"
         tools:targetApi="31">
         <activity
             android:name=".BottomNav"
             android:exported="false" />
-        <activity
-            android:name=".Login"
-            android:exported="false" />
-        <activity
-            android:name=".Signup"
-            android:exported="false" />
+
         <activity
             android:name=".AlarmDialogActivity"
             android:exported="false" />

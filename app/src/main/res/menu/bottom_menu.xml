@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/bottom_home"
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bottom_home"
         android:icon="@drawable/nav_home"
-        android:title="Home"/>
-    <item
-        android:id="@+id/bottom_account"
-        android:icon="@drawable/nav_home"
-        android:title="Account"/>
-    <item
-        android:id="@+id/bottom_logout"
+        android:title="Home"
+        app:showAsAction="always"/>
+    <item android:id="@+id/bottom_account"
+        android:icon="@drawable/nav_settings"
+        android:title="setting"
+        app:showAsAction="always" />
+    <item android:id="@+id/bottom_logout"
         android:icon="@drawable/logout"
-        android:title="Logout"/>
+        android:title="logout"
+        app:showAsAction="always"/>
 
 </menu>

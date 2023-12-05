@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         //start route to login activity
 
         TextView btn = findViewById(R.id.btnWelcome);

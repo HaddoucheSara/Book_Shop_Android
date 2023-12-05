@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AddTask</string>
+    <string name="taskpro">TaskPro</string>
 </resources>
