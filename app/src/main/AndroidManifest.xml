@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -44,6 +46,8 @@
         <activity
             android:name=".activityTask"
             android:exported="false" />
+        <activity android:name=".ProfileActivity" android:exported="true"/>
+        <activity android:name=".Edit_profile" android:exported="true"/>
 
         <receiver
             android:name=".AlarmReceiver"

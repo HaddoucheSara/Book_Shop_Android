@@ -28,7 +28,7 @@ public class activityTask extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bottom_menu, menu); // Assurez-vous de remplacer "your_menu" par le nom de votre fichier de menu XML
+        getMenuInflater().inflate(R.menu.bottom_menu, menu);
         return true;
     }
 
@@ -42,7 +42,7 @@ public class activityTask extends AppCompatActivity {
             return true;
         } else if (id == R.id.bottom_account) {
 
-            // startActivity(new Intent(getApplicationContext(), getApplicationContext());
+             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             return true;
         }
         else if (id == R.id.bottom_logout) {

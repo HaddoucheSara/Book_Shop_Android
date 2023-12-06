@@ -21,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -35,7 +36,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
         mAuth = FirebaseAuth.getInstance();
 
-
+        editUserName = findViewById(R.id.inputUserNameSignUp);
         editEmail = findViewById(R.id.inputEmailSignUp);
         editPassword = findViewById(R.id.inputPasswordSignUp);
         editPasswordConfirm = findViewById(R.id.inputConfimPassword);
@@ -83,6 +84,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 //add user
 
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
                 firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateAccountActivity.this,
                         new OnCompleteListener<AuthResult>() {
                             @Override
@@ -93,6 +95,20 @@ public class CreateAccountActivity extends AppCompatActivity {
                                     Toast.makeText(CreateAccountActivity.this, "Account Created.",
                                             Toast.LENGTH_SHORT).show();
                                     firebaseAuth.getCurrentUser().sendEmailVerification();
+                                    /**** Profile ****/
+                                    String uid = firebaseAuth.getCurrentUser().getUid();
+                                    String email_user = firebaseAuth.getCurrentUser().getEmail();
+                                    String name_user = String.valueOf(editUserName.getText());
+
+                                    //additionall info
+                                    String phoneNumber = "Add your phone";
+                                    String location = "Add your location";
+                                    String interests = "Add your intrests";
+                                    Profile profile = new Profile(uid,name_user,email_user,phoneNumber,interests,location);
+                                    db.collection("profiles")
+                                            .document(uid)
+                                            .set(profile);
+                                    Toast.makeText(CreateAccountActivity.this, profile.profile_inf() , Toast.LENGTH_SHORT).show();
                                     firebaseAuth.signOut();
                                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                                     startActivity(intent);
