@@ -55,7 +55,7 @@ public class ProfileActivity  extends AppCompatActivity {
                 phone_txt.setText(profileUser.getPhone());
                 location_txt.setText(profileUser.getLocation());
                 interests_txt.setText(profileUser.getIntrests());
-                Toast.makeText(this, "Profile inside "+ profileUser.profile_inf() , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Profile inside "+ profileUser.profile_inf() , Toast.LENGTH_SHORT).show();
 
             } else {
                 profileUser = new Profile();
@@ -64,7 +64,7 @@ public class ProfileActivity  extends AppCompatActivity {
             profileUser = new Profile();
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         });
-        Toast.makeText(this, profileUser.profile_inf() , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, profileUser.profile_inf() , Toast.LENGTH_SHORT).show();
 
 
         edit_profile.setOnClickListener(new View.OnClickListener() {
