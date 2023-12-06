@@ -142,7 +142,7 @@
                             android:layout_gravity="start|center"
                             android:contentDescription="Phone"
                             android:paddingHorizontal="8dp"
-                            android:src="@drawable/email"
+                            android:src="@drawable/phone"
                             app:tint="@color/purple"
                             tools:srcCompat="@drawable/phone" />
 
@@ -187,7 +187,7 @@
                             android:layout_gravity="start|center"
                             android:contentDescription="Location"
                             android:paddingHorizontal="8dp"
-                            android:src="@drawable/email"
+                            android:src="@drawable/location"
                             app:tint="@color/purple"
                             tools:srcCompat="@drawable/location" />
 
@@ -232,7 +232,7 @@
                             android:layout_gravity="start|center"
                             android:contentDescription="Intrests"
                             android:paddingHorizontal="8dp"
-                            android:src="@drawable/email"
+                            android:src="@drawable/interests"
                             app:tint="@color/purple"
                             tools:srcCompat="@drawable/interests" />
 

@@ -111,7 +111,8 @@
                             android:contentDescription="Email"
                             android:paddingHorizontal="8dp"
                             android:src="@drawable/email"
-                            app:tint="@color/purple" />
+                            app:tint="@color/purple"
+                            tools:srcCompat="@drawable/email"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -155,9 +156,9 @@
                             android:layout_gravity="start|center"
                             android:contentDescription="Phone"
                             android:paddingHorizontal="8dp"
-                            android:src="@drawable/email"
+                            android:src="@drawable/phone"
                             app:tint="@color/purple"
-                            tools:srcCompat="@drawable/phone" />
+                            tools:srcCompat="@drawable/phone"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -201,9 +202,9 @@
                             android:layout_gravity="start|center"
                             android:contentDescription="Location"
                             android:paddingHorizontal="8dp"
-                            android:src="@drawable/email"
+                            android:src="@drawable/location"
                             app:tint="@color/purple"
-                            tools:srcCompat="@drawable/location" />
+                            tools:srcCompat="@drawable/location"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -247,7 +248,7 @@
                             android:layout_gravity="start|center"
                             android:contentDescription="Intrests"
                             android:paddingHorizontal="8dp"
-                            android:src="@drawable/email"
+                            android:src="@drawable/interests"
                             app:tint="@color/purple"
                             tools:srcCompat="@drawable/interests" />
 
