@@ -108,7 +108,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                                     db.collection("profiles")
                                             .document(uid)
                                             .set(profile);
-                                    Toast.makeText(CreateAccountActivity.this, profile.profile_inf() , Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(CreateAccountActivity.this, profile.profile_inf() , Toast.LENGTH_SHORT).show();
                                     firebaseAuth.signOut();
                                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                                     startActivity(intent);
