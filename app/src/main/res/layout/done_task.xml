@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewTaskDone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#ffff">
+
+        <!-- Ajouter un RelativeLayout pour organiser les éléments à l'intérieur de la CardView -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- ImageView pour l'icône en haut de la CardView -->
+            <ImageView
+                android:id="@+id/imageViewIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/done_img"
+                android:layout_centerHorizontal="true"/>
+
+            <!-- Titre de l'activité -->
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GOOD JOB !"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_below="@id/imageViewIcon"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Informations sur l'alarme -->
+            <TextView
+                android:id="@+id/textViewDoneTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Task completed successfully"
+                android:textSize="18sp"
+                android:layout_below="@id/textViewTitle"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/purple"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- ImageView animé pour l'icône de l'alarme -->
+            <ImageView
+                android:id="@+id/imageViewAnimatedAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDoneTask"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+
+                android:contentDescription="Icône animée de l'alarme"/>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

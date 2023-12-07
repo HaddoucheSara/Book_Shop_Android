@@ -45,7 +45,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
         holder.contentTextView.setText(note.content);
         holder.timestampTextView.setText(Utility.timestampToString(note.timestamp));
         String docIdd = this.getSnapshots().getSnapshot(position).getId();
-  // Modification ici
+        // Modification ici
 
         holder.timeTextView.setText((note.time));
         try {
@@ -68,33 +68,33 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
 
         /*start complete task button*/
         holder.CompleteTask.setOnClickListener(new View.OnClickListener() {
-                                                   @Override
-                                                   public void onClick(View v) {
-                                                       DocumentReference documentReference;
-                                                       documentReference = Utility.getCollectionReferenceForNotes().document(docIdd);
-                                                       documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                           @Override
-                                                           public void onComplete(@NonNull Task<Void> task) {
-                                                               if (task.isSuccessful()) {
-                                                                   //note is deleted
-                                                                   AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                                                                   builder.setTitle("Task Completed")
-                                                                           .setMessage("The task has been completed.")
-                                                                           .setPositiveButton("Close", new DialogInterface.OnClickListener() {
-                                                                               public void onClick(DialogInterface dialog, int which) {
-                                                                                   // Fermez le dialog
-                                                                                   dialog.dismiss();
-                                                                               }
-                                                                           })
-                                                                           .show();
-                                                               } else {
-                                                                   Utility.showToast(context.getApplicationContext(), "Failed while deleting note");
-                                                               }
-                                                           }
-                                                       });
-                                                       DocumentReference taskRef = FirebaseFirestore.getInstance().collection("tasks").document(docIdd);
-                                                   }
-                                               });
+            @Override
+            public void onClick(View v) {
+                DocumentReference documentReference;
+                documentReference = Utility.getCollectionReferenceForNotes().document(docIdd);
+                documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            //note is deleted
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            View customView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.done_task, null);
+                            builder.setView(customView)
+                                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // Fermez le dialog
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .show();
+                        } else {
+                            Utility.showToast(context.getApplicationContext(), "Failed while deleting note");
+                        }
+                    }
+                });
+                DocumentReference taskRef = FirebaseFirestore.getInstance().collection("tasks").document(docIdd);
+            }
+        });
         /*end complete task button*/
 
         holder.itemView.setOnClickListener((v)->{
