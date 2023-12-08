@@ -1,5 +1,6 @@
 package com.example.book_shop;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +8,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -79,6 +82,37 @@ public class ProfileActivity  extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        int id = item.getItemId();
+        if (id == R.id.bottom_home) {
+
+            startActivity(new Intent(getApplicationContext(), activityTask.class));
+            return true;
+        } else if (id == R.id.bottom_account) {
+
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            return true;
+        }
+        else if (id == R.id.bottom_logout) {
+
+            firebaseAuth.getCurrentUser().sendEmailVerification();
+            firebaseAuth.signOut();
+            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        return false;
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

@@ -2,12 +2,15 @@ package com.example.book_shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -90,6 +93,36 @@ public class Edit_profile extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        int id = item.getItemId();
+        if (id == R.id.bottom_home) {
+
+            startActivity(new Intent(getApplicationContext(), activityTask.class));
+            return true;
+        } else if (id == R.id.bottom_account) {
+
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            return true;
+        }
+        else if (id == R.id.bottom_logout) {
+
+            firebaseAuth.getCurrentUser().sendEmailVerification();
+            firebaseAuth.signOut();
+            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        return false;
+
+    }
 
 }
