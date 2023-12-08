@@ -74,6 +74,9 @@ public class Edit_profile extends AppCompatActivity {
                 user.updateProfile(profileUpdates);
                 user.updateEmail(profile.getEmail());*/
 //                db.collection("profiles").document(uid).set(profileUpdates, SetOptions.merge());
+
+
+
                 db.collection("profiles").document(uid).set(profile, SetOptions.merge())
                         .addOnSuccessListener(aVoid -> {
                             // Update was successful
